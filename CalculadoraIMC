@@ -1,0 +1,66 @@
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
+try{
+    // 1. Le o que o usuario vai digitar nos campos de textos 
+    String pesoStr = txtPeso.getText().trim().replace(",", ".");
+    String alturaStr = txtAltura.getText().trim().replace(",", ".");
+    // 2. Verifica se os campos estao vazios
+    if(pesoStr.isEmpty()  ||  alturaStr.isEmpty()){
+        lblResultado.setText("Por favor, preencha peso e altura. ");
+        lblResultado.setForeground(new java.awt.Color( 200,  0, 0));
+        return;
+    }
+    // 3. Converte o texto para numero (double)
+    double peso = Double.parseDouble(pesoStr);
+    double altura = Double.parseDouble(alturaStr);
+    // 4. Verificando se os valores sao validos
+    if ( peso <= 0 || altura <= 0){
+        lblResultado.setText("Valores ser maiores que zero.");
+        lblResultado.setForeground(new java.awt.Color( 200,  0,  0));
+        return;
+    }
+    
+    // 5. Calcular IMC (peso/altura)
+    double imc = peso / (altura * altura);
+   // 6. define a classificaçao de acordo com o IMc
+   String classificacao;
+   java.awt.Color cor;
+   
+   if (imc < 18.5){
+       classificacao = "Abaixo do peso";
+       cor = new java.awt.Color(0, 102, 204);
+   }else if (imc < 25){
+       classificacao = "Peso normal";
+       cor = new java.awt.Color(0, 128, 0);
+   }else if (imc < 30){
+       classificacao = "Sobrepeso";
+       cor = new java.awt.Color(255, 140, 0);
+   }else if (imc < 35){
+       classificacao = "Obesidade I";
+       cor = new java.awt.Color(220,  20, 60);
+   }else if (imc < 40){
+       classificacao = "Obesidade II";
+       cor = new java.awt.Color(178, 34, 34);
+   }else {
+       classificacao = "Obesidade III";
+       cor = new java.awt.Color(139, 0, 0);
+   }
+         // 7. Exibe o resultado formado 
+         lblResultado.setText(String.format("IMC: %.2f - %s",
+                 imc, classificacao));
+         lblResultado.setForeground(cor); 
+         
+}catch(NumberFormatException e ){
+    // caso o usuario digite algo que nao é um numero 
+    lblResultado.setText("Entrada invalida! Use números, ex.: 70 e 1.70");
+    lblResultado.setForeground(new java.awt.Color(200, 0, 0));
+}
+    }                                           
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        txtPeso.setText("");
+        txtAltura.setText("");
+        lblResultado.setText("-");
+        lblResultado.setForeground(new java.awt.Color(0, 0, 0));
+        txtPeso.requestFocus();
+    }                                         
