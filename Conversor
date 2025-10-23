@@ -1,0 +1,48 @@
+
+    private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {                                             
+// Lendo a entrada = convertendo 
+try{
+  //tirando espaços
+    String valorStr = txtValor.getText().trim().replace(",",".");
+//ver se o campo ta vazio
+    if(valorStr.isEmpty()){
+        lblResultado.setText("Por Favor informe o valor em Reais.");
+        lblResultado.setForeground(new java.awt.Color(200, 0, 0));
+        return;
+    }
+  // corvertendo texto para numero
+   double valor = Double.parseDouble(valorStr);
+  // verificando se é valido
+  if (valor <= 0){
+      lblResultado.setText("Os valores tem que ser maiores que zero");
+      lblResultado.setForeground(new java.awt.Color(200, 0, 0));
+      return;
+  }
+    
+  //Convertendo
+  double dolar = valor / 5.60;
+  double euro = valor / 6.10;
+  double peso = valor / 0.030;
+  double libra = valor/7.61;
+  double rublo = valor*30.67;
+  
+ 
+  
+  // exibe o resultado
+  lblResultado.setText(String.format("Dolar:$ %.2f| Euro: $%.2f |Peso: $%.2f |Libra$ %.2f | Rublo$ %.2f",dolar,euro,peso,libra,rublo));
+   
+    
+}catch(NumberFormatException e ){
+    //caso o usuario digite algo que nao é um numero
+    lblResultado.setText("Entrada invalida! Use números, Ex: 10 e 10.90");
+     lblResultado.setForeground(new java.awt.Color(200, 0, 0));
+}
+
+    }                                            
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {                                          
+txtValor.setText("");
+        lblResultado.setText("-");
+        lblResultado.setForeground(new java.awt.Color(0, 0, 0));
+        txtValor.requestFocus();       
+    }                                         
