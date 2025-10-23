@@ -1,0 +1,91 @@
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
+     double total =0; // começa o total com 0
+     //vefifica item por item e soma os valores marcados 
+     if(chkMontro.isSelected()) total += 31;
+     //se o x-monstro for selecionado ele soma 31
+     if(chkBagual.isSelected()) total += 43;
+     if(chkBatataG.isSelected()) total += 50;
+     if(chkBatataM.isSelected()) total += 25;
+     if(chkPastel.isSelected()) total += 15;
+     if(chkCafe.isSelected()) total += 8;
+     if(chkCocacola.isSelected()) total += 5;
+     if(chkSagu.isSelected()) total += 12;
+     if(chkTorta.isSelected()) total += 15;
+     
+     // mostra o resultado formado
+     lblResultado.setText(String.format("Total: R$ %.2f", total));
+     // troca a cor e mensagem conforme o valor 
+     if(total== 0){
+         lblResultado.setForeground(new java.awt.Color(200, 0, 0));
+         lblResultado.setText("Nenhum item selecionado!");
+     }
+     else if(total < 10){
+         lblResultado.setForeground(new java.awt.Color(0, 100, 0));
+     }
+     else if(total <= 25){
+          lblResultado.setForeground(new java.awt.Color(0, 128, 255));
+     }
+     else {
+          lblResultado.setForeground(new java.awt.Color(255, 128, 9));
+          lblResultado.setText(String.format(" Pedido completo! Total: R$%.2f", total));
+          
+     }
+
+
+
+// TODO add your handling code here:
+    }                                           
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {                                          
+     //desmarca todas as opcoes 
+     chkMontro.setSelected(false);
+     chkBagual.setSelected(false);
+     chkBatataG.setSelected(false);
+     chkBatataM.setSelected(false);
+     chkCafe.setSelected(false);
+     chkCocacola.setSelected(false);
+     chkPastel.setSelected(false);
+     chkSagu.setSelected(false);
+     chkTorta.setSelected(false);
+     // restaura o texto do resultado
+     lblResultado.setText("Total: R$ 0,00");
+     lblResultado.setForeground(new java.awt.Color(0, 0, 0));
+             
+        
+        
+    }                                         
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Lanchonete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Lanchonete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Lanchonete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Lanchonete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Lanchonete().setVisible(true);
+            }
+        });
+    }
