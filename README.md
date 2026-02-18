@@ -65,11 +65,4 @@ javac *.java
 
 ---
 
-### 📍 Se tu quiser algo ainda **mais específico**, me diz:
 
-✔ Lista de arquivos/classes que existem no repositório  
-✔ Qual aula/exercício é cada arquivo  
-✔ Se quer trechos comentados, exemplos de saída no terminal ou explicação de lógica
-
-Posso montar um README que descreva **cada arquivo do teu projeto** e seus objetivos 👩‍💻📘
-::contentReference[oaicite:0]{index=0}
